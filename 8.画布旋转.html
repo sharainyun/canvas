@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="900" height="600" id="canvas"></canvas>
+    <script>
+        var canvas  = document.getElementById('canvas')
+        var ctx = canvas.getContext('2d'); //注意：2d小写， 3d：webgl
+        ctx.beginPath();
+        //创建线性渐变的对象，
+        // var grd = ctx.createLinearGradient(0, 0, 170, 0);
+        // grd.addColorStop(0, 'black'); //添加一个渐变颜色，第一个参数介于 0.0 与 1.0 之间的值，表示渐变中开始与结束之间的位置。
+        // grd.addColorStop(1, 'white'); //添加一个渐变颜色
+        // ctx.fillStyle = grd; //关键点，把渐变设置到 填充的样式
+        // ctx.stroke();
+        var rlg = ctx.createRadialGradient(300, 300, 10, 300, 300, 200);
+        rlg.addColorStop(0, 'teal'); //添加一个渐变颜色
+        rlg.addColorStop(0.4, 'navy');
+        rlg.addColorStop(1, 'purple');
+        ctx.fillStyle = rlg;
+        ctx.fillRect(100,100,200,200);
+        ctx.rotate(60*Math.PI/180);
+    </script>
+</body>
+</html>

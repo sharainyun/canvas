@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>canvas</title>
+  </head>
+  <body>
+    <canvas width="600" height="500" id="cavsElem">
+        this is canvas
+    </canvas>
+    
+    <!-- <div class="cavsElem" id="cavsElem"></div> -->
+    <script>
+        (function() {
+            var canvas = document.getElementById('cavsElem');
+            var ctx = canvas.getContext('2d'); //获得上下文
+
+            canvas.width = 900; //设置标签的属性宽高
+            canvas.height = 600; //千万不要用 canvas.style.height
+            canvas.style.border = '1px solid red';
+            ctx.beginPath(); // 开始路径 开始一个新状态可以理解为新建一个新图层,设置的状态都是继承关系，也可以改变
+            // ctx.closePath(); //结束路径
+            // ctx.beginPath();
+            ctx.rect(100, 100, 200, 100);
+            ctx.strokeStyle='black';
+            ctx.fillStyle='red';
+            // ctx.strokeRect(100, 100, 200, 100); // x, y, width, height  strokeRect = rect + stroke
+            ctx.fillRect(100, 100, 200, 100);
+            
+            ctx.stroke(); //描边路径
+        }())   
+    </script>
+  </body>
+</html>

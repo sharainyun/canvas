@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/konva/7.2.1/konva.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+	<script>
+        //创建舞台
+        var stage = new Konva.Stage({
+            container: 'container',
+            width: window.innerWidth,
+            height: window.innerHeight
+        })
+        // 创建层
+        var layer = new Konva.Layer()
+        stage.add(layer)
+        //中心点坐标
+        var cenX = stage.width() / 2
+        var cenY = stage.height() / 2
+        var x = 1 / 8 * stage.width()
+        var y = cenY
+        var height = 1 / 12 * stage.height()
+        var maxWidth = 3 / 4 * stage.width()
+        //绘制一个进度条
+        var innerRect = new Konva.Rect({
+            x,
+            y,
+            width: 100,
+            height: height,
+            opacity: 0.7,
+            fill: 'lightblue',
+            cornerRadius: height / 2
+        })
+        layer.add(innerRect)
+        //创建一个进度条外框
+        var outerRect = new Konva.Rect({
+            x,
+            y,
+            width: maxWidth,
+            height,
+            stroke: 'blue',
+            strokeWidth: 2,
+            cornerRadius: height / 2
+        })
+        layer.add(outerRect)
+        // Konva 动画效果
+        innerRect.to({
+            width: maxWidth,
+            duration: 1.4,
+            // opacity: 0.3,
+            easing: Konva.Easings.EaseInOut
+        })
+        layer.draw()
+	</script>
+</body>
+</html>

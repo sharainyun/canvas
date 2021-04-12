@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="1000" height="600" id="canvas"></canvas>
+    <script>
+        (function() {
+            var canvas  = document.getElementById('canvas')
+            var ctx = canvas.getContext('2d'); //注意：2d小写， 3d：webgl
+            // 用 JavaScript 创建 img 对象
+            // var img = document.getElementById('imgId'); // 第一种方式：
+            var img = new Image(); //这个就是 img标签的dom对象  第2种方式
+            img.src = './images/img.png';
+            // img.alt = '文本信息';
+            img.onload = function() {
+                //图片加载完成后，把图片画进canvas
+                const width = img.width,height = img.height;
+            // ctx.drawImage(img,x,y); // x,y 绘制图片左上角的坐标， img是绘制图片的dom对象。
+            
+                var frameIndex = 0
+                setInterval(function(){
+                    ctx.clearRect(0,0,canvas.width,canvas.height) //清除之前的图片或者重新设置canvas宽高也能清除
+                    ctx.drawImage(img,frameIndex*150,0,150,150,300,300,150,50); // 参数说明：width 绘制图片的宽度，  height：绘制图片的高度 
+                    frameIndex++
+                    frameIndex%=4
+                },1000)
+            }
+        }())
+    </script>
+</body>
+</html>

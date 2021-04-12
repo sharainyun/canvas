@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>canvas</title>
+  </head>
+  <body>
+    <canvas width="600" height="500" id="cavsElem">
+        this is canvas
+    </canvas>
+    
+    <!-- <div class="cavsElem" id="cavsElem"></div> -->
+    <script>
+        (function() {
+            var canvas = document.getElementById('cavsElem');
+            var ctx = canvas.getContext('2d'); //获得上下文
+
+            canvas.width = 900; //设置标签的属性宽高
+            canvas.height = 600; //千万不要用 canvas.style.height
+            const X = 10
+            const Y = 10
+            canvas.style.border = '1px solid #000';
+            for(var i=0; i< canvas.width/X;i++) {
+                // 横线
+                ctx.moveTo(0, i*X); 
+                ctx.lineTo(canvas.width, i*X);
+                // 竖线
+                ctx.moveTo(i*Y, 0)
+                ctx.lineTo(i*Y, canvas.height)
+                // ctx.closePath(); //结束路径
+                // ctx.moveTo(i*X, 0);
+                
+            }
+            // ctx.beginPath();
+            ctx.moveTo(20,20);
+            //绘制2次方曲线，贝赛尔曲线
+            ctx.quadraticCurveTo(20,100,200,20);
+            ctx.stroke(); //描边路径
+        }())   
+    </script>
+  </body>
+</html>

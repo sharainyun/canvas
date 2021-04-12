@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="tjRect.js"></script>
+</head>
+<body>
+	<canvas id="canvas">
+		您的浏览器不支持canvas，请升级您的浏览器
+	</canvas>
+	<script>
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		canvas.width = 600;
+		canvas.height = 600;
+		canvas.style.border = "1px solid black";
+ 
+		var rect = new tjRect({  //根据需要设置参数
+			x:100,
+			y:100,
+			width:90,
+			height:100,
+			fillStyle:"green",
+			strokeStyle:"orange",
+			lineWidth:2,
+			rotation:18,
+			scaleX:1.2,
+			scaleY:1.5
+		});
+		rect.render(ctx);
+ 
+	</script>
+</body>
+</html>
